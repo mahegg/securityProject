@@ -7,9 +7,31 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="securityProject" default="default" basedir=".">
+<project name="securityProject" default="default" basedir="." xmlns:sonar="antlib:org.sonar.ant">
     <description>Builds, tests, and runs the project securityProject.</description>
     <import file="nbproject/build-impl.xml"/>
+    
+        
+        <property name="sonar.host.url" value="http://localhost:9000" />
+        
+        <!-- Define the SonarQube project properties -->
+<property name="sonar.projectKey" value="securityProject" />
+<property name="sonar.projectName" value="securityProject" />
+<property name="sonar.projectVersion" value="1.0" />
+<property name="sonar.sources" value="src/mainlibrary/" />
+<property name="sonar.java.binaries" value="dist"/>
+<property name="sonar.java.libraries" value="dist/securityProject.jar"/>
+
+<!-- Define SonarScanner for Ant Target -->
+<target name="sonar">
+    <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+        <!-- Update the following line, or put the "sonarqube-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
+        <classpath path="sonarqube-ant-task-2.7.1.1951.jar" />
+    </taskdef>
+ 
+    <!-- Execute SonarScanner for Ant Analysis -->
+    <sonar:sonar />
+</target>
     <!--
 
     There exist several targets which are by default empty and which can be 
