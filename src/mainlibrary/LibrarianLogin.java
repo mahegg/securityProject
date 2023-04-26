@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class LibrarianLogin extends javax.swing.JFrame {
 
+    //TODO not finished method
     private static void setvisible(boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -168,7 +169,7 @@ public class LibrarianLogin extends javax.swing.JFrame {
         Uname = username.getText();
         String Pass;
         Pass = String.valueOf(password.getPassword());
-        System.out.println(Uname + " " + Pass);
+        System.out.println(Uname + " " + Pass); //TODO print password
         if (LibrarianDao.validate(Uname, Pass)) {
 
             this.dispose();
